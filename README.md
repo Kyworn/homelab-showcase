@@ -172,6 +172,7 @@ graph TB
 
 ### Sécurité
 - ✅ **Zero-Trust Access** via Cloudflare Tunnel (aucun port ouvert sur Internet)
+- ✅ **WireGuard VPN** intégré Freebox pour accès réseau local sécurisé
 - ✅ **WAF Cloudflare** avec protection DDoS intégrée
 - ✅ **Reverse Proxy** centralisé (Nginx Proxy Manager)
 - ✅ **Accès local isolé** via domaines `*.lan`
@@ -336,7 +337,6 @@ Cette infrastructure a été construite avec une **contrainte budgétaire** volo
 - [ ] **Prometheus + Alertmanager** : Monitoring avancé sans coût
 - [ ] **CI/CD avec Gitea Actions** : Déjà installé, juste à configurer
 - [ ] **VLANs logiques** : Segmentation via Proxmox SDN
-- [ ] **Wireguard VPN** : Alternative gratuite à Cloudflare WARP
 
 ### Moyen Terme (Budget ~200€)
 - [ ] **UPS entrée de gamme** : Protection basique des données
@@ -364,7 +364,7 @@ Cette infrastructure a été construite avec une **contrainte budgétaire** volo
 **Réseau & Sécurité**
 - Cloudflare Zero Trust (Tunnel + Access)
 - Nginx Proxy Manager
-- WireGuard VPN (à implémenter)
+- WireGuard VPN (Freebox intégré)
 
 **Monitoring & Automation**
 - Grafana + InfluxDB

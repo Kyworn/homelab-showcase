@@ -78,15 +78,32 @@ Switch (non managé)
 
 - **Aucun port ouvert** sur le routeur (pas de port forwarding)
 - **Tous les services externes** passent par Cloudflare Tunnel
+- **WireGuard VPN** intégré Freebox pour accès réseau local sécurisé
 - **Firewall Freebox** : Actif
 - **UPnP** : Désactivé (sécurité)
 - **DMZ** : Non configuré
+
+### Accès Distant Sécurisé
+
+**Deux méthodes d'accès :**
+
+1. **Cloudflare Tunnel** (services publics)
+   - Services web exposés publiquement (avec authentification)
+   - WAF et DDoS protection inclus
+   - Aucun port ouvert sur routeur
+   - Latence légèrement plus élevée (routing via Cloudflare Edge)
+
+2. **WireGuard VPN** (accès réseau complet)
+   - Accès direct au réseau local 192.168.1.0/24
+   - Latence minimale (connexion directe)
+   - Permet administration Proxmox, TrueNAS, etc.
+   - Chiffrement moderne et performant
 
 ### Isolation
 
 - Réseau LAN unique (192.168.1.0/24)
 - Pas de VLANs actuellement (évolution future)
-- Accès distant uniquement via VPN/Tunnel sécurisé
+- Segmentation logique via Proxmox SDN (à configurer)
 
 ---
 
