@@ -260,13 +260,93 @@ graph TB
 
 ---
 
-## 🚀 Évolutions Futures
+## 💰 Philosophie : Homelab Budget-Friendly
 
-- [ ] **Réplication Off-Site** : Backups TrueNAS vers stockage distant
-- [ ] **Haute Disponibilité** : Cluster Proxmox multi-nodes
-- [ ] **Monitoring Avancé** : Alerting avec Prometheus + Alertmanager
-- [ ] **CI/CD Pipeline** : GitLab CI ou Drone pour déploiements automatiques
-- [ ] **Kubernetes** : Cluster K3s pour services stateless
+Cette infrastructure a été construite avec une **contrainte budgétaire** volontaire pour démontrer qu'on peut faire du solide sans exploser son compte en banque.
+
+### Ce Qui Coûte Vraiment Zéro
+
+| Composant | Coût Mensuel | Alternative "Pro" |
+|-----------|--------------|-------------------|
+| **Cloudflare Zero Trust** | 0€ | VPS reverse proxy (~5€/mois) ou IP fixe business (~30€/mois) |
+| **Cloudflare Tunnel** | 0€ | WireGuard VPN sur VPS (~5€/mois) |
+| **Cloudflare DNS** | 0€ | DNS managé Route53 (~1€/mois) |
+| **Let's Encrypt SSL** | 0€ | Certificats commerciaux (~50-200€/an) |
+| **Domaine .xyz** | ~1€/an | Domaine .com (~12€/an) |
+
+**Total mensuel services cloud** : **~0.08€** (juste le domaine)
+
+### Matériel Récupéré/Occasion
+
+- **Mini PC AMD Ryzen 7 5800U** : Occasion/récup (~400€ neuf, probablement payé 200-300€ occasion)
+- **Mini PC Intel N100** : Occasion/récup (~150€ neuf)
+- **2x WD Red 1TB** : ~120€ (60€/disque en promo)
+- **Switch Gigabit non managé** : ~20€
+
+**Investissement total estimé** : **~500-600€** (vs 2000-3000€ pour du matos serveur rack neuf)
+
+### Compromis Techniques Assumés
+
+| Limitation | Impact | Solution "Pro" (€€€) |
+|------------|--------|---------------------|
+| **Pas de redondance hyperviseur** | Downtime si panne Proxmox | Cluster 3+ nodes (~1500€) |
+| **Switch non managé** | Pas de VLANs matériels | Switch managé 10G (~300-800€) |
+| **Pas de UPS** | Coupure = arrêt brutal | UPS 1500VA (~200-400€) |
+| **Stockage RAID 1 simple** | Pas de RAID-Z2/RAID6 | 4+ disques + contrôleur HBA (~500€) |
+| **Pas de 10G** | Limité à 1 Gbit/s | Carte 10G + switch (~400€) |
+| **Backups locaux uniquement** | Pas de disaster recovery | Stockage cloud S3 Glacier (~10€/mois) |
+
+### Ce Qui Marche Pareil Qu'une Infra à 5k€
+
+✅ **Sécurité** : Zero Trust avec Cloudflare (même niveau qu'une entreprise)
+✅ **Haute dispo Tunnel** : 8 connexions simultanées vers datacenters Cloudflare
+✅ **Snapshots ZFS** : Protection contre erreurs humaines/ransomware
+✅ **Isolation services** : Conteneurs LXC (aussi bon que des VMs pour la plupart des usages)
+✅ **Monitoring** : Grafana/InfluxDB (stack pro standard)
+✅ **Automatisation** : n8n, backups automatiques, CI/CD possible
+
+### Le Plan "Quand J'Aurai les Thunes"
+
+**Phase 1 - Basics (~300€)**
+- [ ] UPS 1500VA pour éviter la corruption de données
+- [ ] 2 disques WD Red supplémentaires pour RAID-Z2
+- [ ] Backup externe USB 4TB pour off-site manuel
+
+**Phase 2 - Performance (~600€)**
+- [ ] Switch managé 2.5G/10G (8 ports)
+- [ ] Carte réseau 10G pour Proxmox + TrueNAS
+- [ ] 32GB RAM supplémentaire pour Proxmox (passer à 64GB)
+
+**Phase 3 - Redondance (~1500€)**
+- [ ] 2e node Proxmox (mini PC similaire)
+- [ ] Cluster Proxmox HA 2-3 nodes
+- [ ] Ceph ou réplication ZFS entre nodes
+
+**Phase 4 - Overkill (~3000€)**
+- [ ] Rack 12U avec serveurs Dell/HP d'occasion
+- [ ] Switch 10G managé 16+ ports
+- [ ] NAS TrueNAS Scale avec 6-8 disques en RAID-Z2
+- [ ] Connexion fibre dédiée pro (IP fixe)
+
+---
+
+## 🚀 Évolutions Futures (Réalistes)
+
+### Court Terme (Gratuit)
+- [ ] **Prometheus + Alertmanager** : Monitoring avancé sans coût
+- [ ] **CI/CD avec Gitea Actions** : Déjà installé, juste à configurer
+- [ ] **VLANs logiques** : Segmentation via Proxmox SDN
+- [ ] **Wireguard VPN** : Alternative gratuite à Cloudflare WARP
+
+### Moyen Terme (Budget ~200€)
+- [ ] **UPS entrée de gamme** : Protection basique des données
+- [ ] **Backup USB externe** : Off-site manuel chaque semaine
+- [ ] **Ventilation rack** : Si température devient problématique
+
+### Long Terme (Budget ~500€+)
+- [ ] **2e node Proxmox** : Haute disponibilité réelle
+- [ ] **Switch managé 2.5G** : VLANs hardware + performances
+- [ ] **Stockage étendu** : 2-4 disques supplémentaires
 
 ---
 
