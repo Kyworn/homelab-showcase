@@ -25,12 +25,12 @@ graph TD
 
     subgraph "Clients du Stockage"
         PVE[Proxmox VE]
-        SERVICES[Autres services<br/>(ex: *Arr stack)]
+        SERVICES["Autres services (*Arr stack)"]
     end
 
     subgraph "Partages Réseau"
-        NFS[Partages NFS<br/>(pour Proxmox)]
-        SMB[Partages SMB<br/>(pour les clients)]
+        NFS["Partages NFS (pour Proxmox)"]
+        SMB["Partages SMB (pour les clients)"]
     end
     
     subgraph "Datasets ZFS"

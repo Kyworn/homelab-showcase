@@ -24,14 +24,14 @@ graph TD
         direction LR
         
         subgraph "Conteneurs Gateway"
-            CLOUDFLARED[LXC cloudflared<br/>(CT 110)]
-            NPM[LXC nginxproxymanager<br/>(CT 118 - 192.168.1.186)]
+            CLOUDFLARED["📡 LXC cloudflared (CT 110)"]
+            NPM["🔀 LXC Nginx Proxy Manager (CT 118)"]
         end
 
         subgraph "Conteneurs de Services"
-            GITEA[LXC gitea<br/>(CT 120 - 192.168.1.93)]
-            QBIT[LXC qbittorrent<br/>(CT 104 - 192.168.1.52)]
-            SONARR[LXC sonarr<br/>(CT 109 - 192.168.1.192)]
+            GITEA["🗂️ LXC gitea (CT 120)"]
+            QBIT["⬇️ LXC qbittorrent (CT 104)"]
+            SONARR["📺 LXC sonarr (CT 109)"]
             AUTRES_SERVICES[...]
         end
     end
@@ -40,9 +40,9 @@ graph TD
     U_EXT -- HTTPS/DNS --> CF_TUNNEL
     CF_TUNNEL -- Trafic tunnelé --> CLOUDFLARED
     CLOUDFLARED -- Requête locale --> NPM
-    
+
     %% Flux Interne
-    U_INT -- HTTPS via<br/>service.lan --> NPM
+    U_INT -- "HTTPS via service.lan" --> NPM
     
     %% Routage NPM
     NPM -- route 'git.lan' --> GITEA

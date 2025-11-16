@@ -11,7 +11,7 @@ graph TD
     end
 
     subgraph "Stockage Externe"
-        TRUENAS[<-- Stockage NFS/SMB<br/>(TrueNAS 'Tank')]
+        TRUENAS["💿 Stockage NFS/SMB (TrueNAS 'Tank')"]
     end
 
     PVE -- Monte le stockage --> TRUENAS
