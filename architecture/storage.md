@@ -19,24 +19,24 @@ graph TD
     end
 
     subgraph "Disques Physiques"
-        DISK1[Disk 1 (sda)]
-        DISK2[Disk 2 (sdb)]
+        DISK1["💾 Disk 1 - sda"]
+        DISK2["💾 Disk 2 - sdb"]
     end
 
     subgraph "Clients du Stockage"
-        PVE[Proxmox VE]
-        SERVICES["Autres services (*Arr stack)"]
+        PVE["⚙️ Proxmox VE"]
+        SERVICES["📺 Autres services"]
     end
 
     subgraph "Partages Réseau"
-        NFS["Partages NFS (pour Proxmox)"]
-        SMB["Partages SMB (pour les clients)"]
+        NFS["🔗 Partages NFS"]
+        SMB["🔗 Partages SMB"]
     end
-    
+
     subgraph "Datasets ZFS"
-        DS_VMS[Dataset pour VMs & CTs]
-        DS_MEDIA[Dataset Média]
-        DS_BACKUPS[Dataset Backups]
+        DS_VMS["📁 VMs & CTs"]
+        DS_MEDIA["🎬 Média"]
+        DS_BACKUPS["💾 Backups"]
         DS_AUTRES[...]
     end
 

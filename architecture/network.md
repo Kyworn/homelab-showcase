@@ -49,8 +49,6 @@ graph TD
     NPM -- route 'qbit.lan' --> QBIT
     NPM -- route 'sonarr.lan' --> SONARR
     NPM -- route '...' --> AUTRES_SERVICES
-
-end
 ```
 
 ## Description des Flux
